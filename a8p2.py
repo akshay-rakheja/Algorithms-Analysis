@@ -2,20 +2,17 @@
 ECE606, F'21, Assignment 8, Problem 2(b)
 Skeleton solution file.
 """
-
-import math
-
 """
 You are not allowed to import anything else. You are
 allowed to use any built-in Python 3 language feature and
 data structures you like. You are allowed to define any subroutines
 you like to structure your code.
 """
+
 def getEdges(G):
     edges = set()
     for i in range(0, len(G)):
         for j in range(0, len(G[i])):
-            # if (i,G[i][j]) not in edges:
             edges.add((G[i][j], i))
     return edges
 
@@ -32,13 +29,12 @@ def avgsatisfied(G, k):
         for edge in edges:
 
             edge = list(edge)
-            u = ((edge[0])*math.log(counter+1)) % (k)
-            v = ((edge[1])*math.log(counter+1)) % (k)
-            # print('u', u)
-            # print('v', v)
+            u = ((edge[0])*(counter+1)) % (k)
+            v = ((edge[1])*(counter+1)) % (k)
 
             if u != v:
                 satisfied = satisfied + 1
+
         runningavg = runningavg + satisfied
         counter = counter + 1
     print(runningavg/5000)
