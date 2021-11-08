@@ -15,7 +15,7 @@ def getEdges(G):
     edges = set()
     for i in range(0, len(G)):
         for j in range(0, len(G[i])):
-            if (G[i][j], i) not in edges:
+            if (i,G[i][j]) not in edges:
                 edges.add((G[i][j], i))
     return edges
 
@@ -31,8 +31,8 @@ def avgsatisfied(G, k):
         for edge in edges:
             edge = list(edge)
 
-            u = ((counter) ** edge[0]) % (k+1)
-            v = ((counter) ** edge[1]) % (k+1)
+            u = (edge[0] ** (counter+1)) % (k)
+            v = (edge[1] ** (counter+1)) % (k)
 
             if u != v:
                 satisfied = satisfied + 1
