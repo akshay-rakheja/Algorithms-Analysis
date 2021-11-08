@@ -31,8 +31,8 @@ def avgsatisfied(G, k):
         for edge in edges:
             edge = list(edge)
 
-            u = (edge[0] ** (counter+1)) % (k)
-            v = (edge[1] ** (counter+1)) % (k)
+            u = (edge[0] ** counter) % (k+1)
+            v = (edge[1] ** counter) % (k+1)
 
             if u != v:
                 satisfied = satisfied + 1
