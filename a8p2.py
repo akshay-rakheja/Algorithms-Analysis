@@ -2,8 +2,6 @@
 ECE606, F'21, Assignment 8, Problem 2(b)
 Skeleton solution file.
 """
-import math
-
 """
 You are not allowed to import anything else. You are
 allowed to use any built-in Python 3 language feature and
