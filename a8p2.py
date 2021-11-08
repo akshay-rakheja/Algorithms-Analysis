@@ -2,6 +2,8 @@
 ECE606, F'21, Assignment 8, Problem 2(b)
 Skeleton solution file.
 """
+import math
+
 """
 You are not allowed to import anything else. You are
 allowed to use any built-in Python 3 language feature and
@@ -13,7 +15,8 @@ def getEdges(G):
     edges = set()
     for i in range(0, len(G)):
         for j in range(0, len(G[i])):
-            edges.add((G[i][j], i))
+            if (G[i][j], i) not in edges:
+                edges.add((G[i][j], i))
     return edges
 
 def avgsatisfied(G, k):
@@ -22,21 +25,21 @@ def avgsatisfied(G, k):
     counter = 0
     runningavg = 0
     print(len(edges))
-
+    # satisfied = 0
     while(counter<5000):
         satisfied = 0
-
         for edge in edges:
-
             edge = list(edge)
-            u = ((edge[0])*(counter+1)) % (k)
-            v = ((edge[1])*(counter+1)) % (k)
+
+            u = ((counter) ** edge[0]) % (k+1)
+            v = ((counter) ** edge[1]) % (k+1)
 
             if u != v:
                 satisfied = satisfied + 1
 
         runningavg = runningavg + satisfied
         counter = counter + 1
+
     print(runningavg/5000)
     return (runningavg/5000)
 
