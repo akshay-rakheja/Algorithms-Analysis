@@ -40,11 +40,11 @@ def avgsatisfied(G, k):
             if u != v:
                 sat = sat + 1
 
-        running_avg = running_avg + satisfied
+        running_avg = running_avg + sat
         i = i + 1
 
-    # print((runningavg/5000)*0.96)
-    return ((runningavg/5000)*0.96)
+    # print((running_avg/5000)*0.96)
+    return ((running_avg/5000)*0.96)
 
     """
     You need to implement this method. See the handout for its specs.
