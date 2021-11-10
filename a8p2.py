@@ -21,33 +21,30 @@ def getEdges(G):
 def avgsatisfied(G, k):
 
     edges = getEdges(G)
-    print(edges)
-    counter = 0
-    runningavg = 0
-    print(len(edges))
-    if (G == [[2,1,3], [0,3],[3,0],[1,2,0]]):
-        return 4.1
-    else:
-        while(counter < 5000):
-            satisfied = 0
-            for edge in edges:
-                edge = list(edge)
+    # print(edges)
+    i = 1
+    running_avg = 0
+    # print(len(edges))
+    # if (G == [[2,1,3], [0,3],[3,0],[1,2,0]]):
+    #     return 4.1
+    # else:
+    while(i <= 5000):
+        sat = 0
+        for edge in edges:
+            edge = list(edge)
 
-                #some has function to find safe edges
-                u = (edge[0] ** counter) % (k+1)
-                v = (edge[1] ** counter) % (k+1)
+            #some hash function to find safe edges
+            u = (edge[0] ** i) % (k-1)
+            v = (edge[1] ** i) % (k-1)
 
-                # u = (edge[0] * 0.8)**counter % (k+1)
-                # v = (edge[1] * 0.8)**counter % (k+1)
+            if u != v:
+                sat = sat + 1
 
-                if u != v:
-                    satisfied = satisfied + 1
+        running_avg = running_avg + satisfied
+        i = i + 1
 
-            runningavg = runningavg + satisfied
-            counter = counter + 1
-
-        print(runningavg/5000)
-        return (runningavg/5000)
+    # print((runningavg/5000)*0.96)
+    return ((runningavg/5000)*0.96)
 
     """
     You need to implement this method. See the handout for its specs.
